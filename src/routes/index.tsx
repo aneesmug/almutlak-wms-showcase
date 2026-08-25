@@ -1,24 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Deck } from "@/components/deck/Deck";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Almutlak WMS — Bilingual Warehouse Management Platform" },
+      {
+        name: "description",
+        content:
+          "Almutlak WMS unifies receiving, storage, picking, delivery and reporting in one secure, bilingual (English/Arabic) warehouse management system.",
+      },
+      { property: "og:title", content: "Almutlak WMS — Bilingual Warehouse Management Platform" },
+      {
+        property: "og:description",
+        content:
+          "A unified, bilingual platform for modern warehouse operations: multi-warehouse, role-based, real-time.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main>
+      <h1 className="sr-only">Almutlak WMS — A Unified, Bilingual Platform for Modern Warehouse Operations</h1>
+      <Deck />
+    </main>
   );
 }
